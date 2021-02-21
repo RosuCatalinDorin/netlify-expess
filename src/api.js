@@ -1,7 +1,7 @@
 const express = require("express");
 const serverless = require("serverless-http");
 
-import data from "./data";
+import data from "./data.js";
 const app = express();
 const router = express.Router();
 
