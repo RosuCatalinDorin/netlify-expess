@@ -85,7 +85,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/api/products", (req, res) => {
-  res.send(data.products);
+  res.json(data.products);
 });
 
 app.use(`/.netlify/functions/api`, router);
