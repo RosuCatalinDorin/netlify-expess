@@ -77,8 +77,16 @@ const data = {
 
 
 router.get("/", (req, res) => {
+  res.json({
+    app:"ReactWoodStoreAPI"
+  });
+});
+
+
+router.get("/getProducts", (req, res) => {
   res.json(data);
 });
+
 
 app.use(`/.netlify/functions/api`, router);
 
