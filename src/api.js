@@ -1,13 +1,18 @@
 const express = require("express");
 const serverless = require("serverless-http");
 
+import data from "./data";
 const app = express();
 const router = express.Router();
 
-router.get("/geAllNews", (req, res) => {
+router.get("/", (req, res) => {
   res.json({
     hello: "hi!"
   });
+});
+
+router.get("/api/products", (req, res) => {
+  res.json(data.products);
 });
 
 app.use(`/.netlify/functions/api`, router);
