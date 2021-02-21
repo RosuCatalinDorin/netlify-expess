@@ -1,5 +1,6 @@
 const express = require("express");
 const serverless = require("serverless-http");
+const cors = require('cors')
 
 const app = express();
 const router = express.Router();
@@ -77,7 +78,7 @@ const data = {
 
 
 // Set up a whitelist and check against it:
-var whitelist = ['http://example1.com', 'http://example2.com']
+var whitelist = ['https://fervent-mcnulty-b51de2.netlify.app', 'http://example2.com']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -92,6 +93,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 router.get("/", (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.json({
     app:"ReactWoodStoreAPI"
   });
