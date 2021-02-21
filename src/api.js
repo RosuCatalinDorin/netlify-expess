@@ -90,7 +90,7 @@ var corsOptions = {
 }
 
 // Then pass them to cors:
-app.use(cors(corsOptions));
+
 
 router.get("/", (req, res) => {
   res.json({
@@ -108,4 +108,5 @@ router.get("/getProducts", (req, res) => {
 app.use(`/.netlify/functions/api`, router);
 
 module.exports = app;
+app.use(cors(corsOptions));
 module.exports.handler = serverless(app);
