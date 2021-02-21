@@ -76,6 +76,21 @@ const data = {
 };
 
 
+// Set up a whitelist and check against it:
+var whitelist = ['http://example1.com', 'http://example2.com']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+// Then pass them to cors:
+app.use(cors(corsOptions));
+
 router.get("/", (req, res) => {
   res.json({
     app:"ReactWoodStoreAPI"
@@ -84,6 +99,7 @@ router.get("/", (req, res) => {
 
 
 router.get("/getProducts", (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.json(data);
 });
 
