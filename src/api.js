@@ -78,7 +78,7 @@ const data = {
 
 
 // Set up a whitelist and check against it:
-var whitelist = ['https://fervent-mcnulty-b51de2.netlify.app', 'http://example2.com']
+var whitelist = ['https://red-wood-store-ci.netlify.app', 'http://redwoodstore.ro']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -99,7 +99,7 @@ router.get("/", (req, res) => {
 });
 
 
-router.get("/getProducts", (req, res) => {
+router.get("/api/getProducts", (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.json(data);
 });
